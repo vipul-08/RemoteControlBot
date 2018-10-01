@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="in.ac.siesgst.npl.remotecontrolbot.SettingsActivity">
 
-    <include layout="@layout/layout_toolbar"
-        android:id="@+id/toolbar_setting" />
+    <include
+        android:id="@+id/toolbar_setting"
+        layout="@layout/layout_toolbar" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -19,28 +19,28 @@
             android:layout_height="wrap_content">
 
             <LinearLayout
+                android:id="@+id/listOfControls"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:weightSum="2"
-                android:id="@+id/listOfControls">
+                android:weightSum="2">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:padding="16dp"
                     android:layout_weight="1"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:padding="16dp">
 
                     <android.support.design.widget.TextInputLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
 
                         <EditText
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:hint="Forward"
                             android:id="@+id/forward"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
                             android:ems="10"
+                            android:hint="Forward"
                             android:inputType="number" />
 
                     </android.support.design.widget.TextInputLayout>
@@ -50,11 +50,11 @@
                         android:layout_height="wrap_content">
 
                         <EditText
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:hint="Backward"
                             android:id="@+id/backward"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
                             android:ems="10"
+                            android:hint="Backward"
                             android:inputType="number" />
 
                     </android.support.design.widget.TextInputLayout>
@@ -64,11 +64,11 @@
                         android:layout_height="wrap_content">
 
                         <EditText
-                            android:layout_width="match_parent"
                             android:id="@+id/hardLeft"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:ems="10"
                             android:hint="Hard Left"
-                            android:ems="10"
                             android:inputType="number" />
 
                     </android.support.design.widget.TextInputLayout>
@@ -79,46 +79,48 @@
                         android:layout_height="wrap_content">
 
                         <EditText
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:hint="Hard Right"
                             android:id="@+id/hardRight"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
                             android:ems="10"
+                            android:hint="Hard Right"
                             android:inputType="number" />
 
                     </android.support.design.widget.TextInputLayout>
+
                     <android.support.design.widget.TextInputLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
 
                         <EditText
+                            android:id="@+id/resetMotor"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="Reset Motor"
-                            android:id="@+id/resetMotor"
                             android:ems="10"
+                            android:hint="Reset Motor"
                             android:inputType="number" />
 
                     </android.support.design.widget.TextInputLayout>
 
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:padding="16dp"
                     android:layout_weight="1"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:padding="16dp">
 
                     <android.support.design.widget.TextInputLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
 
                         <EditText
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:hint="Soft Left F"
                             android:id="@+id/softLeftF"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
                             android:ems="10"
+                            android:hint="Soft Left F"
                             android:inputType="number" />
 
                     </android.support.design.widget.TextInputLayout>
@@ -128,11 +130,11 @@
                         android:layout_height="wrap_content">
 
                         <EditText
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:hint="Soft Left B"
-                            android:ems="10"
                             android:id="@+id/softLeftB"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:ems="10"
+                            android:hint="Soft Left B"
                             android:inputType="number" />
 
                     </android.support.design.widget.TextInputLayout>
@@ -142,11 +144,11 @@
                         android:layout_height="wrap_content">
 
                         <EditText
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:hint="Soft Right F"
                             android:id="@+id/softRightF"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
                             android:ems="10"
+                            android:hint="Soft Right F"
                             android:inputType="number" />
 
                     </android.support.design.widget.TextInputLayout>
@@ -157,11 +159,11 @@
                         android:layout_height="wrap_content">
 
                         <EditText
+                            android:id="@+id/softRightB"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="Soft Right B"
-                            android:id="@+id/softRightB"
                             android:ems="10"
+                            android:hint="Soft Right B"
                             android:inputType="number" />
 
                     </android.support.design.widget.TextInputLayout>
@@ -170,12 +172,12 @@
             </LinearLayout>
 
             <Button
+                android:id="@+id/submitChanges"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/listOfControls"
                 android:layout_centerHorizontal="true"
-                android:text="Submit"
-                android:id="@+id/submitChanges"/>
+                android:text="Submit" />
 
 
         </RelativeLayout>

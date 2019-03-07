@@ -5,7 +5,7 @@
     android:id="@+id/joystick_root_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/shellshock"
+    android:background="@drawable/battlebots"
     tools:context="in.ac.siesgst.npl.remotecontrolbot.JoystickActivity">
 
     <io.github.controlwear.virtual.joystick.android.JoystickView xmlns:custom="http://schemas.android.com/apk/res-auto"
@@ -58,6 +58,7 @@
         android:fontFamily="sans-serif-condensed"
         android:gravity="center"
         android:padding="8dp"
+        android:textColor="#fff"
         android:text="EDIT CONNECTION"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

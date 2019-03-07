@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
     public static final String BATTLE_BOTS = "Battle Bots";
     private SharedPreferenceManager sharedPreferenceManager;
     public static final Event[] events = new Event[]{
+            // TODO Change Action Icon
             new Event(TIDE_RIPPERS, R.drawable.tiderippers, R.drawable.kick, R.drawable.robosoccer_joy),
 //            new Event(SHELL_SHOCK, R.drawable.shellshock, R.drawable.bullet, R.drawable.shellshock_joy),
             new Event(BATTLE_BOTS, R.drawable.battlebots, R.drawable.bullet, R.drawable.robosoccer_joy)

@@ -8,7 +8,7 @@ import android.content.SharedPreferences;
  */
 
 public class SharedPreferenceManager {
-    public static final String PREF_NAME = "ROBO_SOCCER";
+    public static final String PREF_NAME = "TML";
     public static final int PRIVATE_MODE = 0;
     public static final String LOG_TAG = SharedPreferenceManager.class.getSimpleName();
     SharedPreferences sharedPreferences;

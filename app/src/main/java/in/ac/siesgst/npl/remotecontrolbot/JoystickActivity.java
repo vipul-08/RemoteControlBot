@@ -1,7 +1,6 @@
 package in.ac.siesgst.npl.remotecontrolbot;
 
 import android.annotation.SuppressLint;
-import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -13,18 +12,12 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -62,10 +55,6 @@ public class JoystickActivity extends AppCompatActivity {
     private View dialogView;
     private TextInputEditText ipAddressText;
     private Button submitButton;
-    private TextView playerActionTitle;
-    private RadioGroup playerActionGroup;
-    private RadioButton attackRadio;
-    private RadioButton defenseRadio;
     private AlertDialog connectivityDialog;
 
     // Swaps the JoystickView and Secondary Action Button
@@ -98,7 +87,6 @@ public class JoystickActivity extends AppCompatActivity {
     }
 
     private Event event;
-
 
     @SuppressLint("ClickableViewAccessibility")
     @Override
@@ -155,12 +143,6 @@ public class JoystickActivity extends AppCompatActivity {
         // IP Addr InputView
         ipAddressText = dialogView.findViewById(R.id.ip_address_textview);
 
-        // Player Strategy Stuff
-        playerActionTitle = dialogView.findViewById(R.id.player_selection_title);
-        playerActionGroup = dialogView.findViewById(R.id.player_selection_group);
-        defenseRadio = dialogView.findViewById(R.id.strategy_defense);
-        attackRadio = dialogView.findViewById(R.id.strategy_attack);
-
         // Submit button
         submitButton = dialogView.findViewById(R.id.submit_button);
 
@@ -183,16 +165,7 @@ public class JoystickActivity extends AppCompatActivity {
                     return;
                 }
 
-                if (!event.getName().equals(MainActivity.ROBO_WARS)
-                        && !attackRadio.isChecked()
-                        && !defenseRadio.isChecked()) {
-                    Toast.makeText(JoystickActivity.this, "Please select a player strategy", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-
                 sharedPreferenceManager.createIpSession(ipAddress);
-
-                secondaryAction.setVisibility(attackRadio.isChecked() ? View.VISIBLE : View.GONE);
 
                 connectivityDialog.dismiss();
             }
@@ -208,24 +181,6 @@ public class JoystickActivity extends AppCompatActivity {
                 }
             }
         });
-
-        switch(event.getName()) {
-            case MainActivity.ROBO_SOCCER:
-                playerActionGroup.setVisibility(View.VISIBLE);
-                playerActionTitle.setVisibility(View.VISIBLE);
-                secondaryAction.setVisibility(View.VISIBLE);
-                break;
-            case MainActivity.ROBO_WARS:
-                playerActionGroup.setVisibility(View.GONE);
-                playerActionTitle.setVisibility(View.GONE);
-                secondaryAction.setVisibility(View.GONE);
-                break;
-            case MainActivity.SHELL_SHOCK:
-                playerActionGroup.setVisibility(View.VISIBLE);
-                playerActionTitle.setVisibility(View.VISIBLE);
-                secondaryAction.setVisibility(View.VISIBLE);
-                break;
-        }
 
         if (sharedPreferenceManager.isFirstRun()) {
             sharedPreferenceManager.firstRun();

@@ -56,36 +56,6 @@ public class JoystickActivity extends AppCompatActivity {
     private TextInputEditText ipAddressText;
     private Button submitButton;
     private AlertDialog connectivityDialog;
-
-    // Swaps the JoystickView and Secondary Action Button
-    private void swapControls() {
-        ConstraintSet rootConstraintSet = new ConstraintSet();
-        rootConstraintSet.clone(rootView);
-
-        rootConstraintSet.clear(R.id.joystick_view, ConstraintSet.END);
-        rootConstraintSet.clear(R.id.joystick_view, ConstraintSet.START);
-
-        rootConstraintSet.clear(R.id.button_view, ConstraintSet.START);
-        rootConstraintSet.clear(R.id.button_view, ConstraintSet.END);
-
-        rootConstraintSet.setMargin(R.id.button_view, ConstraintSet.START, buttonMargin);
-        rootConstraintSet.setMargin(R.id.button_view, ConstraintSet.END, buttonMargin);
-
-        if (isJoystickToRight) {
-            rootConstraintSet.connect(R.id.joystick_view, ConstraintSet.START, ConstraintSet.PARENT_ID, ConstraintSet.START);
-            rootConstraintSet.connect(R.id.button_view, ConstraintSet.END, ConstraintSet.PARENT_ID, ConstraintSet.END);
-        } else {
-            rootConstraintSet.connect(R.id.joystick_view, ConstraintSet.END, ConstraintSet.PARENT_ID, ConstraintSet.END);
-            rootConstraintSet.connect(R.id.button_view, ConstraintSet.START, ConstraintSet.PARENT_ID, ConstraintSet.START);
-        }
-
-        TransitionManager.beginDelayedTransition(rootView);
-
-        rootConstraintSet.applyTo(rootView);
-
-        isJoystickToRight = !isJoystickToRight;
-    }
-
     private Event event;
 
     @SuppressLint("ClickableViewAccessibility")
@@ -233,9 +203,37 @@ public class JoystickActivity extends AppCompatActivity {
         });
     }
 
+    // Swaps the JoystickView and Secondary Action Button
+    private void swapControls() {
+        ConstraintSet rootConstraintSet = new ConstraintSet();
+        rootConstraintSet.clone(rootView);
+
+        rootConstraintSet.clear(R.id.joystick_view, ConstraintSet.END);
+        rootConstraintSet.clear(R.id.joystick_view, ConstraintSet.START);
+
+        rootConstraintSet.clear(R.id.button_view, ConstraintSet.START);
+        rootConstraintSet.clear(R.id.button_view, ConstraintSet.END);
+
+        rootConstraintSet.setMargin(R.id.button_view, ConstraintSet.START, buttonMargin);
+        rootConstraintSet.setMargin(R.id.button_view, ConstraintSet.END, buttonMargin);
+
+        if (isJoystickToRight) {
+            rootConstraintSet.connect(R.id.joystick_view, ConstraintSet.START, ConstraintSet.PARENT_ID, ConstraintSet.START);
+            rootConstraintSet.connect(R.id.button_view, ConstraintSet.END, ConstraintSet.PARENT_ID, ConstraintSet.END);
+        } else {
+            rootConstraintSet.connect(R.id.joystick_view, ConstraintSet.END, ConstraintSet.PARENT_ID, ConstraintSet.END);
+            rootConstraintSet.connect(R.id.button_view, ConstraintSet.START, ConstraintSet.PARENT_ID, ConstraintSet.START);
+        }
+
+        TransitionManager.beginDelayedTransition(rootView);
+
+        rootConstraintSet.applyTo(rootView);
+
+        isJoystickToRight = !isJoystickToRight;
+    }
+
     @Override
     protected void onStop() {
-
         sharedPreferenceManager.closeIpSession();
         super.onStop();
     }
@@ -251,7 +249,6 @@ public class JoystickActivity extends AppCompatActivity {
 
         public UDPSender(int message) {
             this.message = message;
-
         }
 
         @Override

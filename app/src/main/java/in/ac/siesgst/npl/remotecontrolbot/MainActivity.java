@@ -21,13 +21,11 @@ import com.google.gson.Gson;
 public class MainActivity extends AppCompatActivity {
 
     public static final String TIDE_RIPPERS = "Tide Ripperz";
-//    public static final String SHELL_SHOCK = "Shell Shock";
     public static final String BATTLE_BOTS = "Battle Bots";
     private SharedPreferenceManager sharedPreferenceManager;
     public static final Event[] events = new Event[]{
             // TODO Change Action Icon
-            new Event(TIDE_RIPPERS, R.drawable.tiderippers, R.drawable.kick, R.drawable.robosoccer_joy),
-//            new Event(SHELL_SHOCK, R.drawable.shellshock, R.drawable.bullet, R.drawable.shellshock_joy),
+            new Event(TIDE_RIPPERS, R.drawable.tiderippers, R.drawable.bullet, R.drawable.robosoccer_joy),
             new Event(BATTLE_BOTS, R.drawable.battlebots, R.drawable.bullet, R.drawable.robosoccer_joy)
     };
     private RecyclerView recyclerView;
@@ -83,6 +81,7 @@ public class MainActivity extends AppCompatActivity {
                         Intent joyIntent = new Intent(MainActivity.this, JoystickActivity.class);
                         joyIntent.putExtra("event", new Gson().toJson(events[getAdapterPosition()]));
                         startActivity(joyIntent);
+                        finish();
                     }
                 });
             }

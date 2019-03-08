@@ -76,6 +76,10 @@ public class JoystickActivity extends AppCompatActivity {
         joystickView.setBackgroundResource(event.getJoyDrawable());
 
         secondaryAction = findViewById(R.id.button_view);
+
+        if (event.getName().equalsIgnoreCase(MainActivity.TIDE_RIPPERS))
+            secondaryAction.setVisibility(View.GONE);
+
         secondaryAction.setImageResource(event.getButtonDrawable());
 
         secondaryAction.setOnTouchListener(new View.OnTouchListener() {
@@ -163,39 +167,30 @@ public class JoystickActivity extends AppCompatActivity {
             public void onMove(int angle, int strength) {
 
                 if (((angle <= 30 && angle >= 0) || (angle >= 331 && angle <= 359)) && strength >= 85 && !curr.equals("rr")) {
-//                    status.setText("Hard Right");
                     new Thread(new UDPSender(sharedPreferenceManager.getRight())).start();
                     curr = "rr";
                 } else if (angle >= 31 && angle <= 60 && strength >= 85 && !curr.equals("rf")) {
-//                    status.setText("Soft Right F");
-//                    new Thread(new UDPSender(sharedPreferenceManager.getSoftRightF())).start();
+                    // Do nothing
                     curr = "rf";
                 } else if (angle >= 61 && angle <= 120 && strength >= 85 && !curr.equals("ff")) {
-//                    status.setText("Forward");
                     new Thread(new UDPSender(sharedPreferenceManager.getForward())).start();
                     curr = "ff";
                 } else if (angle >= 121 && angle <= 150 && strength >= 85 && !curr.equals("lf")) {
-//                    status.setText("Soft Left F");
-//                    new Thread(new UDPSender(sharedPreferenceManager.getSoftLeftF())).start();
+                    // Do nothing
                     curr = "lf";
                 } else if (angle >= 151 && angle <= 210 && strength >= 85 && !curr.equals("ll")) {
-//                    status.setText("Hard Left");
                     new Thread(new UDPSender(sharedPreferenceManager.getLeft())).start();
                     curr = "ll";
                 } else if (angle >= 211 && angle <= 240 && strength >= 85 && !curr.equals("lb")) {
-//                    status.setText("Soft Left B");
-//                    new Thread(new UDPSender(sharedPreferenceManager.getSoftLeftB())).start();
+                    // Do nothing
                     curr = "lb";
                 } else if (angle >= 241 && angle <= 300 && strength >= 85 && !curr.equals("bb")) {
-//                    status.setText("Backward");
                     new Thread(new UDPSender(sharedPreferenceManager.getBackward())).start();
                     curr = "bb";
                 } else if (angle >= 301 && angle <= 330 && strength >= 85 && !curr.equals("rb")) {
-//                    status.setText("Soft Right B");
-//                    new Thread(new UDPSender(sharedPreferenceManager.getSoftRightB())).start();
+                    // Do nothing
                     curr = "rb";
                 } else if (strength <= 85 && !curr.equals("reset")) {
-//                    status.setText("");
                     new Thread(new UDPSender(sharedPreferenceManager.getMotorReset())).start();
                     curr = "reset";
                 }
